@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Suspect - CrimeNet</title>
+    <style>
+        body {
+            background-image: url('https://www.engliterra.com/wp-content/uploads/2020/03/laws.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        form {
+            width: 50%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #captcha-box {
+            background: #ddd;
+            padding: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #218838;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Report Suspect</h1>
+        <p>Quickly report attempts to commit cybercrime using suspicious Website URLs, WhatsApp Numbers, Telegram Handles, Phone Numbers, Email-IDs, SMS Headers, Social Media URLs, Deepfakes, or Mobile Apps.</p>
+        <p>If you have become a victim of Cybercrime, please report immediately at <a href="https://www.cybercrime.gov.in/" target="_blank" style="color: yellow;">cybercrime.gov.in</a> or call the National Helpline Number: <strong>1930</strong>.</p>
+    </header>
+    
+    <form action="#" method="post" enctype="multipart/form-data">
+        <label for="state">State of Incident*</label>
+        <select id="state" name="state" required>
+            <option value="ARUNACHAL PRADESH">Arunachal Pradesh</option>
+            <option value="OTHER">Other</option>
+        </select>
+
+        <label for="report-type">What do you want to report?</label>
+        <select id="report-type" name="report-type" required>
+            <option value="website">Website URL</option>
+            <option value="whatsapp">WhatsApp Number / Telegram Handle</option>
+            <option value="phone">Phone Number</option>
+            <option value="email">Email ID</option>
+            <option value="sms">SMS Header/Number</option>
+            <option value="social-media">Social Media URL</option>
+            <option value="deepfake">Deepfake</option>
+            <option value="mobile-app">Mobile App</option>
+        </select>
+
+        <label for="code">Country Code*</label>
+        <input type="text" id="code" name="code" value="+91" readonly>
+
+        <label for="whatsapp">WhatsApp Number</label>
+        <input type="text" id="whatsapp" name="whatsapp">
+
+        <label for="telegram">Telegram Handle</label>
+        <input type="text" id="telegram" name="telegram">
+
+        <label>Choose the type of suspected WhatsApp communication*</label>
+        <input type="radio" id="whatsapp-call" name="whatsapp-type" value="call"> <label for="whatsapp-call">WhatsApp Call</label>
+        <input type="radio" id="whatsapp-text" name="whatsapp-type" value="text"> <label for="whatsapp-text">WhatsApp Text</label>
+
+        <label for="evidence">Upload Supporting Evidence (Max: 5MB)*</label>
+        <input type="file" id="evidence" name="evidence" accept=".jpg, .jpeg, .png, .pdf" required>
+
+        <label for="description">Description (Max 500 characters)*</label>
+        <textarea id="description" name="description" maxlength="500" required></textarea>
+        
+        <div class="captcha-container">
+            <input type="text" id="captcha" name="captcha" placeholder="Enter Captcha" required>
+            <div id="captcha-box"><span id="captcha-text"></span>
+                <button type="button" id="refresh-captcha" onclick="generateCaptcha()">↻</button>
+            </div>
+        </div>
+
+        <button type="submit">Submit Report</button>
+    </form>
+
+    <script>
+        function generateCaptcha() {
+            const captcha = Math.random().toString(36).substring(2, 8).toUpperCase();
+            document.getElementById("captcha-text").innerText = captcha;
+        }
+        window.onload = generateCaptcha;
+    </script>
+
+    <footer>
+        <p>Useful Links: <a href="#">Feedback</a> | <a href="#">FAQ</a> | <a href="#">Contact Us</a> | <a href="#">Website Policies</a> | <a href="#">Privacy Policy</a> | <a href="#">Disclaimer</a></p>
+        <p>Website Content Managed by CrimeNet. Best viewed in Google Chrome.</p>
+    </footer>
+</body>
+</html>
